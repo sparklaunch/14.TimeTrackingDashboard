@@ -14,6 +14,9 @@
 <style>
     #profile {
         grid-area: profile;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     #title {
         display: flex;
@@ -21,7 +24,7 @@
         background-color: rgb(77, 62, 231);
         padding: 30px;
         border-radius: 10px;
-        margin: -30px -30px 0 -30px;
+        margin: -30px -30px 30px -30px;
     }
     #title > img {
         border: 3px solid white;
@@ -48,10 +51,15 @@
     }
     #profile > ul {
         list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     #profile > ul > li {
         color: rgb(99, 103, 167);
-        margin-top: 20px;
+    }
+    #profile > ul > li:not(:last-child) {
+        margin-bottom: 20px;
     }
     .active {
         color: white !important;

@@ -86,5 +86,11 @@
     #container {
         display: grid;
         grid-template-areas: "profile work play study" "profile exercise social self-care";
+        grid-gap: 30px;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 250px);
+    }
+    #container > div {
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
     }
 </style>
