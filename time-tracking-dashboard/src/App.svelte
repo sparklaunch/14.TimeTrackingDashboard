@@ -3,6 +3,8 @@
     import Profile from "./components/Profile.svelte";
     import Item from "./components/Item.svelte";
     let data: Item[] = [];
+    type Time = "daily" | "monthly" | "weekly";
+    let chosen: Time = "weekly";
     class Color {
         r: Number;
         g: Number;
@@ -61,6 +63,9 @@
             icon: "icon-self-care.svg"
         }
     ];
+    const timeChosenHandler = (event) => {
+        chosen = event.detail.chosen.toLowerCase();
+    };
     onMount(async () => {
         const response: Response = await fetch("/data.json");
         data = await response.json();
@@ -69,9 +74,9 @@
 
 <div id="app">
     <div id="container">
-        <Profile />
+        <Profile on:timeChosen={timeChosenHandler} />
         {#each data as item, index}
-            <Item {item} design={designData[index]} />
+            <Item {item} design={designData[index]} time={chosen} />
         {/each}
     </div>
 </div>

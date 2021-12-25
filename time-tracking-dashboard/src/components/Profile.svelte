@@ -1,10 +1,30 @@
+<script lang="ts">
+    import { createEventDispatcher } from "svelte";
+    type Void = void;
+    const dispatcher = createEventDispatcher();
+    const timeClickHandler: (any) => Void = (event) => {
+        if (event.target instanceof HTMLLIElement) {
+            const lists: NodeListOf<HTMLLIElement> =
+                document.querySelectorAll("#profile > ul > li");
+            lists.forEach((list) => {
+                list.classList.remove("active");
+            });
+            const chosen: HTMLLIElement = event.target;
+            chosen.classList.toggle("active");
+            dispatcher("timeChosen", {
+                chosen: chosen.innerText
+            });
+        }
+    };
+</script>
+
 <div id="profile">
     <div id="title">
         <img src="/assets/image-jeremy.png" alt="Jeremy" />
         <p>Report for</p>
         <h1>Jeremy Robson</h1>
     </div>
-    <ul>
+    <ul on:click={timeClickHandler}>
         <li>Daily</li>
         <li class="active">Weekly</li>
         <li>Monthly</li>

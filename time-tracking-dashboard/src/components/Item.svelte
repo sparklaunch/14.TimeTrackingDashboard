@@ -1,6 +1,7 @@
 <script lang="ts">
     export let item;
     export let design;
+    export let time;
     let isMouseOverEllipsis: Boolean = false;
     let isMouseOverDetail: Boolean = false;
     const extractGridArea: (String) => String = (url: String) => {
@@ -57,10 +58,10 @@
             />
         </div>
         <div class="item-detail-figure">
-            <p>{item.timeframes["weekly"].current}hrs</p>
+            <p>{item.timeframes[time].current}hrs</p>
         </div>
         <div class="item-detail-last">
-            <p>Last Week - {item.timeframes["weekly"].previous}hrs</p>
+            <p>Last Week - {item.timeframes[time].previous}hrs</p>
         </div>
     </div>
 </div>
