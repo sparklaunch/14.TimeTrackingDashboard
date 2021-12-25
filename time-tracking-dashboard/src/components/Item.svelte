@@ -1,6 +1,8 @@
 <script lang="ts">
     export let item;
     export let design;
+    let isMouseOverEllipsis: Boolean = false;
+    let isMouseOverDetail: Boolean = false;
     const extractGridArea: (String) => String = (url: String) => {
         return url.match(/^icon-([a-z\-]+)\.svg$/)[1];
     };
@@ -14,6 +16,19 @@
             this.style = parsed;
         }
     }
+    type Void = void;
+    const ellipsisMouseEnterHandler: () => Void = () => {
+        isMouseOverEllipsis = true;
+    };
+    const ellipsisMouseLeaveHandler: () => Void = () => {
+        isMouseOverEllipsis = false;
+    };
+    const detailMouseEnterHandler: () => Void = () => {
+        isMouseOverDetail = true;
+    };
+    const detailMouseLeaveHandler: () => Void = () => {
+        isMouseOverDetail = false;
+    };
     $: gridArea = extractGridArea(design.icon);
     $: styleObject = {
         "background-color": design.backgroundColor.getRGBString(),
@@ -25,16 +40,27 @@
 
 <div class="item" style={itemStyle}>
     <img src="/assets/{design.icon}" alt={item.title} />
-    <div class="item-detail">
+    <div
+        class="item-detail"
+        on:mouseenter|stopPropagation={detailMouseEnterHandler}
+        on:mouseleave|stopPropagation={detailMouseLeaveHandler}
+        class:detail-hovered={isMouseOverDetail}
+    >
         <div class="item-detail-title">
             <p>{item.title}</p>
-            <img src="/assets/icon-ellipsis.svg" alt="Ellipsis" />
+            <img
+                src="/assets/icon-ellipsis.svg"
+                alt="Ellipsis"
+                on:mouseenter={ellipsisMouseEnterHandler}
+                on:mouseleave={ellipsisMouseLeaveHandler}
+                class:ellipsis-hovered={isMouseOverEllipsis}
+            />
         </div>
         <div class="item-detail-figure">
-            <p>32hrs</p>
+            <p>{item.timeframes["weekly"].current}hrs</p>
         </div>
         <div class="item-detail-last">
-            <p>Last Week</p>
+            <p>Last Week - {item.timeframes["weekly"].previous}hrs</p>
         </div>
     </div>
 </div>
@@ -62,6 +88,8 @@
         padding: 25px;
         margin-top: -70px;
         z-index: 1;
+        transition: background-color 0.3s;
+        cursor: pointer;
     }
     .item-detail-title {
         display: flex;
@@ -74,6 +102,8 @@
     }
     .item-detail-title > img {
         width: 15px;
+        cursor: pointer;
+        transition: filter 0.3s;
     }
     .item-detail-figure {
         margin-bottom: 10px;
@@ -87,5 +117,11 @@
         color: rgb(192, 196, 255);
         font-weight: 300;
         font-size: 14px;
+    }
+    .ellipsis-hovered {
+        filter: brightness(1.5);
+    }
+    .detail-hovered {
+        background-color: rgb(45, 50, 112);
     }
 </style>

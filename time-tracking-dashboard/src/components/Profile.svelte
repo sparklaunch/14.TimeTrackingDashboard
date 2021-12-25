@@ -57,6 +57,11 @@
     }
     #profile > ul > li {
         color: rgb(99, 103, 167);
+        transition: color 0.3s;
+        cursor: pointer;
+    }
+    #profile > ul > li:hover {
+        color: white;
     }
     #profile > ul > li:not(:last-child) {
         margin-bottom: 20px;
