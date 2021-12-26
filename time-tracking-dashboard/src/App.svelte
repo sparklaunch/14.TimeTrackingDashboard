@@ -102,8 +102,7 @@
             padding: 100px 30px;
         }
         #container {
-            display: flex;
-            flex-direction: column;
+            display: block;
         }
     }
 </style>

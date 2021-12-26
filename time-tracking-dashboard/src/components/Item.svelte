@@ -125,4 +125,29 @@
     .detail-hovered {
         background-color: rgb(45, 50, 112);
     }
+    @media all and (max-width: 1440px) {
+        .item {
+            margin: 30px auto;
+        }
+        .item > img {
+            height: 120px;
+            width: auto;
+        }
+        .item-detail {
+            display: block;
+        }
+        .item-detail-figure {
+            flex: none;
+            float: left;
+            margin-bottom: 0;
+        }
+        .item-detail-figure > p {
+            font-size: 36px;
+        }
+        .item-detail-last {
+            flex: none;
+            float: right;
+            line-height: 43px;
+        }
+    }
 </style>

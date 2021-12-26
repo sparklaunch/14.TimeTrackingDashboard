@@ -90,8 +90,6 @@
         color: white !important;
     }
     @media all and (max-width: 1440px) {
-        #profile {
-        }
         #title {
             display: block;
             overflow: hidden;
@@ -109,6 +107,12 @@
         #title > h1 {
             font-size: 27px;
             margin-bottom: 0;
+        }
+        #profile > ul {
+            flex-direction: row;
+        }
+        #profile > ul > li {
+            margin-bottom: 0 !important;
         }
     }
 </style>
