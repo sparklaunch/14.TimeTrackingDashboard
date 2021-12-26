@@ -95,7 +95,15 @@
         grid-template-rows: repeat(2, 1fr);
         grid-template-columns: repeat(4, 250px);
     }
-    #container > div {
-        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+    @media all and (max-width: 1440px) {
+        #app {
+            display: block;
+            height: auto;
+            padding: 100px 30px;
+        }
+        #container {
+            display: flex;
+            flex-direction: column;
+        }
     }
 </style>

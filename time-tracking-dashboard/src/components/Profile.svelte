@@ -89,4 +89,26 @@
     .active {
         color: white !important;
     }
+    @media all and (max-width: 1440px) {
+        #profile {
+        }
+        #title {
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        #title > img {
+            float: left;
+            margin-right: 30px;
+            margin-bottom: 0;
+        }
+        #title > p {
+            margin-bottom: 8px;
+            margin-top: 12px;
+        }
+        #title > h1 {
+            font-size: 27px;
+            margin-bottom: 0;
+        }
+    }
 </style>
