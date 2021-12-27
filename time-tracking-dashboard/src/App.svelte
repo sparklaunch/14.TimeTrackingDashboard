@@ -72,17 +72,17 @@
     });
 </script>
 
-<div id="app">
+<main>
     <div id="container">
         <Profile on:timeChosen={timeChosenHandler} />
         {#each data as item, index}
             <Item {item} design={designData[index]} time={chosen} />
         {/each}
     </div>
-</div>
+</main>
 
 <style>
-    #app {
+    main {
         display: flex;
         height: 100%;
         justify-content: center;
@@ -96,7 +96,7 @@
         grid-template-columns: repeat(4, 250px);
     }
     @media all and (max-width: 1440px) {
-        #app {
+        main {
             display: block;
             height: auto;
             padding: 100px 30px;
